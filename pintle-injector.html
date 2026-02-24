@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Bryan Yeh | Engineering Portfolio</title>
+  <title>Pintle Injector Design | Bryan Yeh</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
@@ -15,26 +15,6 @@
       scroll-behavior: smooth;
     }
 
-    section {
-      padding: 100px 10%;
-    }
-
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-    }
-
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
-
-    p {
-      color: #aaa;
-      max-width: 650px;
-      line-height: 1.6;
-    }
-
     nav {
       position: fixed;
       width: 100%;
@@ -44,6 +24,7 @@
       padding: 15px 10%;
       display: flex;
       justify-content: space-between;
+      align-items: center;
       z-index: 1000;
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
@@ -51,7 +32,6 @@
     nav a {
       color: #f5f5f5;
       text-decoration: none;
-      margin-left: 20px;
       font-size: 0.9rem;
       opacity: 0.85;
       transition: opacity 0.2s ease;
@@ -61,67 +41,138 @@
       opacity: 1;
     }
 
-    .hero {
-      height: 100vh;
+    main {
+      padding: 120px 10% 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      margin: 0 0 10px 0;
+    }
+
+    .subtitle {
+      color: #aaa;
+      max-width: 760px;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .pill-row {
       display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding-top: 140px;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 40px;
     }
 
-    .button {
-      margin-top: 20px;
-      padding: 10px 20px;
-      border: 1px solid #555;
-      background: transparent;
-      color: white;
-      cursor: pointer;
-      transition: 0.25s ease;
-      border-radius: 10px;
+    .pill {
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.02);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      color: #ddd;
     }
 
-    .button:hover {
-      background: white;
-      color: black;
+    .section {
+      margin-top: 40px;
+      padding-top: 10px;
     }
 
-    .project-grid {
+    h2 {
+      font-size: 1.6rem;
+      margin: 0 0 12px 0;
+    }
+
+    p {
+      color: #aaa;
+      line-height: 1.7;
+      max-width: 800px;
+    }
+
+    ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: #aaa;
+      line-height: 1.7;
+      max-width: 850px;
+    }
+
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      margin-top: 18px;
     }
 
-    /* Clean clickable card */
-    .project-card {
-      display: block;
+    .card {
+      grid-column: span 6;
       border: 1px solid rgba(255,255,255,0.10);
-      padding: 20px;
-      transition: transform 0.25s ease, border-color 0.25s ease;
-      cursor: pointer;
+      background: rgba(255,255,255,0.02);
+      border-radius: 16px;
+      padding: 18px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+      color: #f5f5f5;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .media {
+      margin-top: 18px;
+      border: 1px solid rgba(255,255,255,0.10);
       border-radius: 16px;
       background: rgba(255,255,255,0.02);
+      padding: 14px;
+    }
 
+    .media img {
+      width: 100%;
+      border-radius: 12px;
+      display: block;
+    }
+
+    .caption {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: #888;
+      line-height: 1.5;
+    }
+
+    .back {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      border: 1px solid rgba(255,255,255,0.14);
+      padding: 8px 12px;
+      border-radius: 12px;
       text-decoration: none;
-      color: inherit;
+      color: #f5f5f5;
+      opacity: 0.9;
+      transition: 0.2s ease;
     }
 
-    .project-card:hover {
-      border-color: rgba(255,255,255,0.28);
-      transform: translateY(-4px);
-    }
-
-    .project-card:visited {
-      color: inherit;
+    .back:hover {
+      opacity: 1;
+      background: rgba(255,255,255,0.06);
     }
 
     footer {
       text-align: center;
-      padding: 50px;
+      padding: 50px 10%;
       font-size: 0.8rem;
       color: #666;
+      border-top: 1px solid rgba(255,255,255,0.06);
     }
 
-    /* Scroll reveal animation */
+    /* Reveal animation */
     .reveal {
       opacity: 0;
       transform: translateY(18px);
@@ -132,6 +183,11 @@
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .card { grid-column: span 12; }
+      h1 { font-size: 2.2rem; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -145,85 +201,113 @@
 </head>
 
 <body>
+  <nav>
+    <a class="back" href="index.html">← Back</a>
+    <div style="font-size:0.9rem; color:#aaa;">Project</div>
+  </nav>
 
-<nav>
-  <div>Bryan Yeh</div>
-  <div>
-    <a href="#projects">Projects</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact</a>
-  </div>
-</nav>
+  <main>
+    <div class="reveal">
+      <h1>Pintle Injector Design</h1>
+      <p class="subtitle">
+        Design and documentation of a liquid rocket pintle injector plate, including engineering drawings for manufacturing
+        and iterative geometry updates based on build constraints.
+      </p>
 
-<section class="hero">
-  <div class="reveal">
-    <h1>Mechanical Engineering Portfolio</h1>
-    <p>Focused on analysis, propulsion, and test-driven design.</p>
-    <a href="#projects"><button class="button">View Projects</button></a>
-  </div>
-</section>
-
-<section id="projects">
-  <div class="reveal">
-    <h2>Projects</h2>
-    <div class="project-grid">
-
-      <a href="brake-rotor.html" class="project-card reveal">
-        <h3>FSAE Brake Rotor FEA</h3>
-        <p>Thermal + structural validation in ANSYS.</p>
-      </a>
-
-      <a href="pintle-injector.html" class="project-card reveal">
-        <h3>Pintle Injector Design</h3>
-        <p>Injector plate design + manufacturing drawings.</p>
-      </a>
-
-      <a href="end-effector.html" class="project-card reveal">
-        <h3>Robotic End Effector</h3>
-        <p>Suction-based grasping mechanism with iterative prototyping.</p>
-      </a>
-
+      <div class="pill-row">
+        <span class="pill">SolidWorks</span>
+        <span class="pill">Manufacturing Drawings</span>
+        <span class="pill">DFM</span>
+        <span class="pill">Propulsion Hardware</span>
+      </div>
     </div>
-  </div>
-</section>
 
-<section id="about">
-  <div class="reveal">
-    <h2>About</h2>
-    <p>
-      I design and validate hardware systems through CAD, simulation, and iterative testing.
-      My focus is aerospace and propulsion systems.
-    </p>
-  </div>
-</section>
+    <section class="section reveal">
+      <h2>Overview</h2>
+      <p>
+        The goal was to create a manufacturable injector plate design that could survive review and be handed off cleanly
+        to manufacturing. I focused on clarity of specs, feature intent, and iteration discipline (change one thing, check it, document it).
+      </p>
+    </section>
 
-<section id="contact">
-  <div class="reveal">
-    <h2>Contact</h2>
-    <p>Email: <a href="mailto:bryanyehh@gmail.com" style="color:#f5f5f5; text-decoration: underline; text-underline-offset: 3px;">bryanyehh@gmail.com</a></p>
-  </div>
-</section>
+    <section class="section reveal">
+      <h2>What I Owned</h2>
+      <ul>
+        <li>CAD modeling of injector plate geometry and relevant interfaces</li>
+        <li>Engineering drawings for manufacturing: dimensions, tolerances, and callouts</li>
+        <li>Design iteration based on machining constraints and team feedback</li>
+      </ul>
+    </section>
 
-<footer>
-  © 2026 Bryan Yeh
-</footer>
+    <section class="section reveal">
+      <h2>Design Decisions</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Manufacturability first</h3>
+          <p>Kept features realistic for common machining operations and avoided geometry that would require exotic tooling.</p>
+        </div>
+        <div class="card">
+          <h3>Clear interfaces</h3>
+          <p>Prioritized mating surfaces, bolt patterns, and stack-up clarity so assembly errors are less likely.</p>
+        </div>
+        <div class="card">
+          <h3>Documentation discipline</h3>
+          <p>Every revision had a reason, and drawings were kept consistent so the shop can build without guessing.</p>
+        </div>
+        <div class="card">
+          <h3>Review-ready layout</h3>
+          <p>Organized features and views so a reviewer can understand the design in under a minute.</p>
+        </div>
+      </div>
+    </section>
 
-<script>
-  const items = document.querySelectorAll(".reveal");
+    <section class="section reveal">
+      <h2>Results / Deliverables</h2>
+      <ul>
+        <li>Injector plate CAD model ready for manufacturing handoff</li>
+        <li>Engineering drawings with critical dimensions + notes</li>
+        <li>Revision updates based on constraints discovered during review</li>
+      </ul>
+    </section>
 
-  const observer = new IntersectionObserver(
-    (entries, obs) => {
-      entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("visible");
-        obs.unobserve(entry.target);
-      });
-    },
-    { threshold: 0.18 }
-  );
+    <section class="section reveal">
+      <h2>Gallery</h2>
+      <p>
+        Add your CAD renders and drawing screenshots here. Put the image files in your repo and reference them below.
+      </p>
 
-  items.forEach((el) => observer.observe(el));
-</script>
+      <div class="media">
+        <!-- Replace the src with your actual image path, e.g. images/injector-cad.png -->
+        <img src="images/injector-cad.png" alt="Pintle injector CAD render (placeholder)">
+        <div class="caption">CAD render (replace this image). Suggested: show injector plate + key features.</div>
+      </div>
 
+      <div class="media">
+        <img src="images/injector-drawing.png" alt="Manufacturing drawing (placeholder)">
+        <div class="caption">Manufacturing drawing screenshot (replace this image). Suggested: show tolerances + callouts.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Bryan Yeh
+  </footer>
+
+  <script>
+    const items = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("visible");
+          obs.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.18 }
+    );
+
+    items.forEach((el) => observer.observe(el));
+  </script>
 </body>
 </html>
