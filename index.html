@@ -15,19 +15,10 @@
       scroll-behavior: smooth;
     }
 
-    section {
-      padding: 100px 10%;
-    }
+    section { padding: 100px 10%; }
 
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
-    }
-
-    h2 {
-      font-size: 2rem;
-      margin-bottom: 20px;
-    }
+    h1 { font-size: 3rem; margin-bottom: 20px; }
+    h2 { font-size: 2rem; margin-bottom: 20px; }
 
     p {
       color: #aaa;
@@ -56,10 +47,7 @@
       opacity: 0.85;
       transition: opacity 0.2s ease;
     }
-
-    nav a:hover {
-      opacity: 1;
-    }
+    nav a:hover { opacity: 1; }
 
     .hero {
       height: 100vh;
@@ -81,11 +69,7 @@
       transition: 0.25s ease;
       border-radius: 10px;
     }
-
-    .button:hover {
-      background: white;
-      color: black;
-    }
+    .button:hover { background: white; color: black; }
 
     .project-grid {
       display: grid;
@@ -113,9 +97,7 @@
       box-shadow: 0 20px 40px rgba(0,0,0,0.4);
     }
 
-    .project-card:visited {
-      color: inherit;
-    }
+    .project-card:visited { color: inherit; }
 
     footer {
       text-align: center;
@@ -124,7 +106,7 @@
       color: #666;
     }
 
-    /* SIDE SLIDE ANIMATION (stronger) */
+    /* SIDE SLIDE ANIMATION */
     .reveal {
       opacity: 0;
       transform: translateX(-60px);
@@ -132,9 +114,7 @@
       will-change: opacity, transform;
     }
 
-    .reveal.from-right {
-      transform: translateX(60px);
-    }
+    .reveal.from-right { transform: translateX(60px); }
 
     .reveal.visible {
       opacity: 1;
@@ -148,65 +128,85 @@
       color: #f5f5f5;
       animation: blink 1s infinite;
     }
-
     @keyframes blink {
       0%, 50%, 100% { opacity: 1; }
       25%, 75% { opacity: 0; }
     }
 
-    /* Rocket animation */
-    .rocket-container {
+    /* --- Rocket motion path (loop) --- */
+    .rocket-wrap {
       position: absolute;
-      top: 60px;
-      left: -140px;
-      width: 120px;
-      height: 120px;
+      inset: 0;
       pointer-events: none;
-      animation: flyAcross 3.5s ease-out forwards;
-      opacity: 0;
+      /* starts slightly after load to feel intentional */
+      animation: rocketDelay 3.9s linear forwards;
+    }
+
+    @keyframes rocketDelay {
+      0% { opacity: 1; }
+      100% { opacity: 1; }
     }
 
     .rocket {
-      width: 100%;
-      filter: drop-shadow(0 0 10px rgba(255,255,255,0.35));
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 86px;
+      height: 86px;
+      opacity: 0;
+
+      /* Motion path: left -> loop mid -> exit right */
+      offset-path: path("M -120 140 C 140 70, 260 60, 420 120
+                        C 520 155, 520 240, 430 260
+                        C 330 280, 305 155, 420 150
+                        C 560 145, 740 110, 980 70");
+      offset-rotate: auto 90deg;
+
+      animation: rocketFly 3.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      filter: drop-shadow(0 0 10px rgba(255,255,255,0.25));
     }
 
-    @keyframes flyAcross {
-      0% {
-        transform: translateX(0) translateY(25px) rotate(-15deg);
-        opacity: 0;
-      }
-      10% {
-        opacity: 1;
-      }
-      60% {
-        transform: translateX(62vw) translateY(-35px) rotate(10deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateX(120vw) translateY(-90px) rotate(25deg);
-        opacity: 0;
-      }
+    @keyframes rocketFly {
+      0%   { offset-distance: 0%; opacity: 0; transform: scale(0.98); }
+      6%   { opacity: 1; }
+      70%  { opacity: 1; }
+      100% { offset-distance: 100%; opacity: 0; transform: scale(1.02); }
     }
 
+    /* Optional subtle trail */
+    .trail {
+      position: absolute;
+      width: 180px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(255,255,255,0), rgba(255,255,255,0.45), rgba(255,255,255,0));
+      border-radius: 999px;
+      opacity: 0;
+      offset-path: path("M -120 140 C 140 70, 260 60, 420 120
+                        C 520 155, 520 240, 430 260
+                        C 330 280, 305 155, 420 150
+                        C 560 145, 740 110, 980 70");
+      offset-rotate: auto;
+      animation: trailFly 3.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      filter: blur(0.2px);
+    }
+
+    @keyframes trailFly {
+      0%   { offset-distance: 0%; opacity: 0; }
+      10%  { opacity: 0.35; }
+      85%  { opacity: 0.25; }
+      100% { offset-distance: 100%; opacity: 0; }
+    }
+
+    /* Respect reduced motion */
     @media (prefers-reduced-motion: reduce) {
-      .reveal {
-        transition: none;
-        transform: none;
-        opacity: 1;
-      }
-      .cursor {
-        animation: none;
-      }
-      .rocket-container {
-        display: none;
-      }
+      .reveal { transition: none; transform: none; opacity: 1; }
+      .cursor { animation: none; }
+      .rocket-wrap { display: none; }
     }
   </style>
 </head>
 
 <body>
-
 <nav>
   <div>Bryan Yeh</div>
   <div>
@@ -217,19 +217,29 @@
 </nav>
 
 <section class="hero">
-  <!-- Rocket flies across once on load -->
-  <div class="rocket-container" aria-hidden="true">
-    <svg class="rocket" viewBox="0 0 100 100">
-      <polygon points="50,5 65,40 50,35 35,40" fill="white"/>
-      <rect x="45" y="35" width="10" height="30" fill="white"/>
-      <polygon points="45,65 55,65 50,85" fill="orange"/>
+
+  <!-- Rocket + trail (plays once) -->
+  <div class="rocket-wrap" aria-hidden="true">
+    <div class="trail"></div>
+
+    <svg class="rocket" viewBox="0 0 128 128" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <!-- Outline rocket icon similar to what you sent -->
+      <path d="M80 18c-14 3-28 17-34 31l-5 13 13-5c14-6 28-20 31-34l2-10-7 5z"
+            stroke="white" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M46 62l-10 10c-3 3-4 8-2 12l2 5 5-2c4-2 9-1 12-4l10-10"
+            stroke="white" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M62 46l20 20" stroke="white" stroke-width="4.5" stroke-linecap="round"/>
+      <circle cx="76" cy="40" r="7" stroke="white" stroke-width="4.5"/>
+      <path d="M38 88c-8 2-14 8-16 16 8-2 14-8 16-16z"
+            stroke="white" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+      <path d="M58 108c8-2 14-8 16-16-8 2-14 8-16 16z"
+            stroke="white" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
     </svg>
   </div>
 
   <div class="reveal">
     <h1>Bryan Yeh Project Showcase 2026</h1>
 
-    <!-- Typewriter line -->
     <p>
       <span id="typed-text"></span><span class="cursor">|</span>
     </p>
@@ -289,7 +299,6 @@
     const text = "Focused on analysis, propulsion, and test-driven design.";
     const target = document.getElementById("typed-text");
     let i = 0;
-
     target.textContent = "";
 
     setTimeout(() => {
@@ -297,21 +306,18 @@
         if (i < text.length) {
           target.textContent += text.charAt(i);
           i += 1;
-          setTimeout(tick, 32); // typing speed
+          setTimeout(tick, 32);
         }
       };
       tick();
-    }, 800); // pause before typing
+    }, 800);
   });
 
   // Reveal animation
   const items = document.querySelectorAll(".reveal");
 
-  // Alternate left / right
   items.forEach((el, i) => {
-    if (i % 2 === 1) {
-      el.classList.add("from-right");
-    }
+    if (i % 2 === 1) el.classList.add("from-right");
   });
 
   const observer = new IntersectionObserver(
