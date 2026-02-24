@@ -67,6 +67,8 @@
       flex-direction: column;
       justify-content: center;
       padding-top: 140px;
+      position: relative;
+      overflow: hidden;
     }
 
     .button {
@@ -144,12 +146,47 @@
       display: inline-block;
       margin-left: 4px;
       color: #f5f5f5;
-      animation: blink 2s infinite;
+      animation: blink 1s infinite;
     }
 
     @keyframes blink {
       0%, 50%, 100% { opacity: 1; }
       25%, 75% { opacity: 0; }
+    }
+
+    /* Rocket animation */
+    .rocket-container {
+      position: absolute;
+      top: 60px;
+      left: -140px;
+      width: 120px;
+      height: 120px;
+      pointer-events: none;
+      animation: flyAcross 3.5s ease-out forwards;
+      opacity: 0;
+    }
+
+    .rocket {
+      width: 100%;
+      filter: drop-shadow(0 0 10px rgba(255,255,255,0.35));
+    }
+
+    @keyframes flyAcross {
+      0% {
+        transform: translateX(0) translateY(25px) rotate(-15deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 1;
+      }
+      60% {
+        transform: translateX(62vw) translateY(-35px) rotate(10deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateX(120vw) translateY(-90px) rotate(25deg);
+        opacity: 0;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -160,6 +197,9 @@
       }
       .cursor {
         animation: none;
+      }
+      .rocket-container {
+        display: none;
       }
     }
   </style>
@@ -177,6 +217,15 @@
 </nav>
 
 <section class="hero">
+  <!-- Rocket flies across once on load -->
+  <div class="rocket-container" aria-hidden="true">
+    <svg class="rocket" viewBox="0 0 100 100">
+      <polygon points="50,5 65,40 50,35 35,40" fill="white"/>
+      <rect x="45" y="35" width="10" height="30" fill="white"/>
+      <polygon points="45,65 55,65 50,85" fill="orange"/>
+    </svg>
+  </div>
+
   <div class="reveal">
     <h1>Bryan Yeh Project Showcase 2026</h1>
 
@@ -241,7 +290,6 @@
     const target = document.getElementById("typed-text");
     let i = 0;
 
-    // start empty (in case browser cached text)
     target.textContent = "";
 
     setTimeout(() => {
@@ -249,7 +297,7 @@
         if (i < text.length) {
           target.textContent += text.charAt(i);
           i += 1;
-          setTimeout(tick, 55); // typing speed
+          setTimeout(tick, 32); // typing speed
         }
       };
       tick();
@@ -271,7 +319,7 @@
       entries.forEach((entry) => {
         if (!entry.isIntersecting) return;
         entry.target.classList.add("visible");
-        obs.unobserve(entry.target); // reveal once
+        obs.unobserve(entry.target);
       });
     },
     { threshold: 0.18 }
