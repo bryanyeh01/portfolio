@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bryan Yeh | Engineering Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0a0a0a;
+      color: #f5f5f5;
+      scroll-behavior: smooth;
+    }
+
+    section {
+      padding: 100px 10%;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #aaa;
+      max-width: 650px;
+      line-height: 1.6;
+    }
+
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(6px);
+      padding: 15px 10%;
+      display: flex;
+      justify-content: space-between;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    nav a {
+      color: #f5f5f5;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 0.9rem;
+      opacity: 0.85;
+      transition: opacity 0.2s ease;
+    }
+
+    nav a:hover {
+      opacity: 1;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 140px;
+    }
+
+    .button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: 1px solid #555;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      transition: 0.25s ease;
+      border-radius: 10px;
+    }
+
+    .button:hover {
+      background: white;
+      color: black;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    /* Clean clickable card */
+    .project-card {
+      display: block;
+      border: 1px solid rgba(255,255,255,0.10);
+      padding: 20px;
+      transition: transform 0.25s ease, border-color 0.25s ease;
+      cursor: pointer;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.02);
+
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .project-card:hover {
+      border-color: rgba(255,255,255,0.28);
+      transform: translateY(-4px);
+    }
+
+    .project-card:visited {
+      color: inherit;
+    }
+
+    footer {
+      text-align: center;
+      padding: 50px;
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    /* Scroll reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+      will-change: opacity, transform;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        transition: none;
+        transform: none;
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <div>Bryan Yeh</div>
+  <div>
+    <a href="#projects">Projects</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="reveal">
+    <h1>Mechanical Engineering Portfolio</h1>
+    <p>Focused on analysis, propulsion, and test-driven design.</p>
+    <a href="#projects"><button class="button">View Projects</button></a>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="reveal">
+    <h2>Projects</h2>
+    <div class="project-grid">
+
+      <a href="brake-rotor.html" class="project-card reveal">
+        <h3>FSAE Brake Rotor FEA</h3>
+        <p>Thermal + structural validation in ANSYS.</p>
+      </a>
+
+      <a href="pintle-injector.html" class="project-card reveal">
+        <h3>Pintle Injector Design</h3>
+        <p>Injector plate design + manufacturing drawings.</p>
+      </a>
+
+      <a href="end-effector.html" class="project-card reveal">
+        <h3>Robotic End Effector</h3>
+        <p>Suction-based grasping mechanism with iterative prototyping.</p>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="reveal">
+    <h2>About</h2>
+    <p>
+      I design and validate hardware systems through CAD, simulation, and iterative testing.
+      My focus is aerospace and propulsion systems.
+    </p>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="reveal">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:bryanyehh@gmail.com" style="color:#f5f5f5; text-decoration: underline; text-underline-offset: 3px;">bryanyehh@gmail.com</a></p>
+  </div>
+</section>
+
+<footer>
+  © 2026 Bryan Yeh
+</footer>
+
+<script>
+  const items = document.querySelectorAll(".reveal");
+
+  const observer = new IntersectionObserver(
+    (entries, obs) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("visible");
+        obs.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.18 }
+  );
+
+  items.forEach((el) => observer.observe(el));
+</script>
+
+</body>
+</html>
