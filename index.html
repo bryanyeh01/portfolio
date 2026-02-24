@@ -91,26 +91,25 @@
       gap: 20px;
     }
 
-.project-card {
-  display: block;
-  border: 1px solid rgba(255,255,255,0.10);
-  padding: 20px;
-  cursor: pointer;
-  border-radius: 16px;
-  background: rgba(255,255,255,0.02);
-  text-decoration: none;
-  color: inherit;
+    .project-card {
+      display: block;
+      border: 1px solid rgba(255,255,255,0.10);
+      padding: 20px;
+      cursor: pointer;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.02);
+      text-decoration: none;
+      color: inherit;
 
-  /* IMPORTANT: always define base transform */
-  transform: translateY(0);
-  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
-}
+      transform: translateY(0);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+    }
 
-.project-card:hover {
-  transform: translateY(-20px);
-  border-color: rgba(255,255,255,0.35);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-}
+    .project-card:hover {
+      transform: translateY(-20px);
+      border-color: rgba(255,255,255,0.35);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    }
 
     .project-card:visited {
       color: inherit;
@@ -140,11 +139,27 @@
       transform: translateX(0);
     }
 
+    /* Typewriter cursor */
+    .cursor {
+      display: inline-block;
+      margin-left: 4px;
+      color: #f5f5f5;
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      0%, 50%, 100% { opacity: 1; }
+      25%, 75% { opacity: 0; }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .reveal {
         transition: none;
         transform: none;
         opacity: 1;
+      }
+      .cursor {
+        animation: none;
       }
     }
   </style>
@@ -164,7 +179,12 @@
 <section class="hero">
   <div class="reveal">
     <h1>Bryan Yeh Project Showcase 2026</h1>
-    <p>Focused on analysis, propulsion, and test-driven design.</p>
+
+    <!-- Typewriter line -->
+    <p>
+      <span id="typed-text"></span><span class="cursor">|</span>
+    </p>
+
     <a href="#projects"><button class="button">View Projects</button></a>
   </div>
 </section>
@@ -215,6 +235,28 @@
 </footer>
 
 <script>
+  // Typewriter effect
+  window.addEventListener("load", () => {
+    const text = "Focused on analysis, propulsion, and test-driven design.";
+    const target = document.getElementById("typed-text");
+    let i = 0;
+
+    // start empty (in case browser cached text)
+    target.textContent = "";
+
+    setTimeout(() => {
+      const tick = () => {
+        if (i < text.length) {
+          target.textContent += text.charAt(i);
+          i += 1;
+          setTimeout(tick, 32); // typing speed
+        }
+      };
+      tick();
+    }, 800); // pause before typing
+  });
+
+  // Reveal animation
   const items = document.querySelectorAll(".reveal");
 
   // Alternate left / right
