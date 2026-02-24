@@ -91,26 +91,35 @@
       gap: 20px;
     }
 
-  .project-card {
-    display: block;
-    border: 1px solid rgba(255,255,255,0.10);
-    padding: 20px;
-    cursor: pointer;
-    border-radius: 16px;
-    background: rgba(255,255,255,0.02);
-    text-decoration: none;
-    color: inherit;
+/* --- Bouncy hover --- */
+.project-card {
+  display: block;
+  border: 1px solid rgba(255,255,255,0.10);
+  padding: 20px;
+  cursor: pointer;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.02);
+  text-decoration: none;
+  color: inherit;
 
-    transition: 
-      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
-      border-color 0.3s ease,
-      box-shadow 0.3s ease;
-  }
+  /* Keep normal transitions for border/shadow */
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+  transform: translateY(0);
+}
 
 .project-card:hover {
   border-color: rgba(255,255,255,0.35);
-  transform: translateY(-10px) scale(1.02);
   box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+
+  /* This is the bounce */
+  animation: cardBounce 420ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes cardBounce {
+  0%   { transform: translateY(0) scale(1); }
+  55%  { transform: translateY(-14px) scale(1.02); } /* overshoot */
+  80%  { transform: translateY(-9px)  scale(1.015); } /* bounce back */
+  100% { transform: translateY(-11px) scale(1.02); } /* settle */
 }
 
     .project-card:visited {
