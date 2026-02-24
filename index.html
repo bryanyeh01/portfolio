@@ -91,22 +91,27 @@
       gap: 20px;
     }
 
-    .project-card {
-      display: block;
-      border: 1px solid rgba(255,255,255,0.10);
-      padding: 20px;
-      transition: transform 0.25s ease, border-color 0.25s ease;
-      cursor: pointer;
-      border-radius: 16px;
-      background: rgba(255,255,255,0.02);
-      text-decoration: none;
-      color: inherit;
-    }
+  .project-card {
+    display: block;
+    border: 1px solid rgba(255,255,255,0.10);
+    padding: 20px;
+    cursor: pointer;
+    border-radius: 16px;
+    background: rgba(255,255,255,0.02);
+    text-decoration: none;
+    color: inherit;
 
-    .project-card:hover {
-      border-color: rgba(255,255,255,0.28);
-      transform: translateY(-4px);
-    }
+    transition: 
+      transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+.project-card:hover {
+  border-color: rgba(255,255,255,0.35);
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
 
     .project-card:visited {
       color: inherit;
