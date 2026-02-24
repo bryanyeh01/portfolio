@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Robotic End Effector | Bryan Yeh</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0a0a0a;
+      color: #f5f5f5;
+      scroll-behavior: smooth;
+    }
+
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(6px);
+      padding: 15px 10%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    nav a {
+      color: #f5f5f5;
+      text-decoration: none;
+      font-size: 0.9rem;
+      opacity: 0.85;
+      transition: opacity 0.2s ease;
+    }
+
+    nav a:hover {
+      opacity: 1;
+    }
+
+    main {
+      padding: 120px 10% 80px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 2.6rem;
+      margin: 0 0 10px 0;
+    }
+
+    .subtitle {
+      color: #aaa;
+      max-width: 760px;
+      line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 18px 0 40px;
+    }
+
+    .pill {
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.02);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      color: #ddd;
+    }
+
+    .section {
+      margin-top: 40px;
+      padding-top: 10px;
+    }
+
+    h2 {
+      font-size: 1.6rem;
+      margin: 0 0 12px 0;
+    }
+
+    p {
+      color: #aaa;
+      line-height: 1.7;
+      max-width: 800px;
+    }
+
+    ul {
+      margin: 12px 0 0;
+      padding-left: 18px;
+      color: #aaa;
+      line-height: 1.7;
+      max-width: 850px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .card {
+      grid-column: span 6;
+      border: 1px solid rgba(255,255,255,0.10);
+      background: rgba(255,255,255,0.02);
+      border-radius: 16px;
+      padding: 18px;
+    }
+
+    .card h3 {
+      margin: 0 0 8px;
+      font-size: 1.05rem;
+      color: #f5f5f5;
+    }
+
+    .card p {
+      margin: 0;
+      font-size: 0.95rem;
+    }
+
+    .media {
+      margin-top: 18px;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 16px;
+      background: rgba(255,255,255,0.02);
+      padding: 14px;
+    }
+
+    .media img {
+      width: 100%;
+      border-radius: 12px;
+      display: block;
+    }
+
+    .caption {
+      margin-top: 10px;
+      font-size: 0.85rem;
+      color: #888;
+      line-height: 1.5;
+    }
+
+    .back {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      border: 1px solid rgba(255,255,255,0.14);
+      padding: 8px 12px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #f5f5f5;
+      opacity: 0.9;
+      transition: 0.2s ease;
+    }
+
+    .back:hover {
+      opacity: 1;
+      background: rgba(255,255,255,0.06);
+    }
+
+    footer {
+      text-align: center;
+      padding: 50px 10%;
+      font-size: 0.8rem;
+      color: #666;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    /* Reveal animation */
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+      will-change: opacity, transform;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 900px) {
+      .card { grid-column: span 12; }
+      h1 { font-size: 2.2rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        transition: none;
+        transform: none;
+        opacity: 1;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav>
+    <a class="back" href="index.html">← Back</a>
+    <div style="font-size:0.9rem; color:#aaa;">Project</div>
+  </nav>
+
+  <main>
+    <div class="reveal">
+      <h1>Robotic End Effector</h1>
+      <p class="subtitle">
+        Mechanical design and rapid prototyping of an end-effector for automated fruit picking, focused on reliable grasping,
+        suction integration, and iteration based on real test outcomes.
+      </p>
+
+      <div class="pill-row">
+        <span class="pill">CAD</span>
+        <span class="pill">Rapid Prototyping</span>
+        <span class="pill">Mechanism Design</span>
+        <span class="pill">Testing & Iteration</span>
+      </div>
+    </div>
+
+    <section class="section reveal">
+      <h2>Overview</h2>
+      <p>
+        This project was about making a mechanism that works in real conditions. I designed the end-effector geometry,
+        built prototypes, tested failure modes, and iterated the design until the grasp and release were consistent.
+      </p>
+    </section>
+
+    <section class="section reveal">
+      <h2>What I Owned</h2>
+      <ul>
+        <li>CAD design of the end-effector geometry and interfaces</li>
+        <li>Prototype build iterations (print → test → revise)</li>
+        <li>Design updates based on failure modes observed during testing</li>
+      </ul>
+    </section>
+
+    <section class="section reveal">
+      <h2>Key Design Goals</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Reliable grasp</h3>
+          <p>Geometry designed to help self-align and maintain contact under small misalignments.</p>
+        </div>
+        <div class="card">
+          <h3>Clean release</h3>
+          <p>Built around consistent release behavior to reduce jams and missed picks.</p>
+        </div>
+        <div class="card">
+          <h3>Integration-ready</h3>
+          <p>Kept mounting and interfaces clear so the end-effector can be swapped and tested quickly.</p>
+        </div>
+        <div class="card">
+          <h3>Iterate fast</h3>
+          <p>Designed for quick prints and quick tests so improvements happened weekly, not monthly.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <h2>Results / Deliverables</h2>
+      <ul>
+        <li>End-effector CAD model + revision history</li>
+        <li>Prototype parts and test-backed design updates</li>
+        <li>Documented design decisions based on test outcomes</li>
+      </ul>
+    </section>
+
+    <section class="section reveal">
+      <h2>Gallery</h2>
+      <p>
+        Add photos of prototypes, suction setup, and CAD renders here. Upload the images into your repo and link them below.
+      </p>
+
+      <div class="media">
+        <!-- Replace with your real image path -->
+        <img src="images/end-effector-cad.png" alt="End effector CAD render (placeholder)">
+        <div class="caption">CAD render (replace this image). Show overall shape + key surfaces.</div>
+      </div>
+
+      <div class="media">
+        <img src="images/end-effector-prototype.png" alt="Prototype photo (placeholder)">
+        <div class="caption">Prototype photo (replace this image). Real-world proof matters a lot here.</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    © 2026 Bryan Yeh
+  </footer>
+
+  <script>
+    const items = document.querySelectorAll(".reveal");
+
+    const observer = new IntersectionObserver(
+      (entries, obs) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("visible");
+          obs.unobserve(entry.target);
+        });
+      },
+      { threshold: 0.18 }
+    );
+
+    items.forEach((el) => observer.observe(el));
+  </script>
+</body>
+</html>
