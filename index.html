@@ -144,7 +144,7 @@
       display: inline-block;
       margin-left: 4px;
       color: #f5f5f5;
-      animation: blink 1s infinite;
+      animation: blink 2s infinite;
     }
 
     @keyframes blink {
@@ -249,7 +249,7 @@
         if (i < text.length) {
           target.textContent += text.charAt(i);
           i += 1;
-          setTimeout(tick, 45); // typing speed
+          setTimeout(tick, 55); // typing speed
         }
       };
       tick();
