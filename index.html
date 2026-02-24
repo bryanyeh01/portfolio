@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Name | Engineering Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: #0a0a0a;
+      color: #f5f5f5;
+      scroll-behavior: smooth;
+    }
+
+    section {
+      padding: 100px 10%;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+
+    p {
+      color: #aaa;
+      max-width: 600px;
+    }
+
+    nav {
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(6px);
+      padding: 15px 10%;
+      display: flex;
+      justify-content: space-between;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: #f5f5f5;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 0.9rem;
+    }
+
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      border: 1px solid #555;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .button:hover {
+      background: white;
+      color: black;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .project-card {
+      border: 1px solid #333;
+      padding: 20px;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .project-card:hover {
+      border-color: white;
+      transform: translateY(-5px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 50px;
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+  </style>
+</head>
+<body>
+
+<nav>
+  <div>Your Name</div>
+  <div>
+    <a href="#projects">Projects</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Mechanical Engineering Portfolio</h1>
+  <p>Focused on analysis, propulsion, and test-driven design.</p>
+  <a href="#projects"><button class="button">View Projects</button></a>
+</section>
+
+<section id="projects">
+  <h2>Projects</h2>
+  <div class="project-grid">
+    <div class="project-card">
+      <h3>FSAE Brake Rotor FEA</h3>
+      <p>Thermal + structural validation in ANSYS.</p>
+    </div>
+    <div class="project-card">
+      <h3>Pintle Injector Design</h3>
+      <p>Injector plate design + manufacturing drawings.</p>
+    </div>
+    <div class="project-card">
+      <h3>Robotic End Effector</h3>
+      <p>Suction-based grasping mechanism with iterative prototyping.</p>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <h2>About</h2>
+  <p>I design and validate hardware systems through CAD, simulation, and iterative testing. My focus is aerospace and propulsion systems.</p>
+</section>
+
+<section id="contact">
+  <h2>Contact</h2>
+  <p>Email: youremail@example.com</p>
+</section>
+
+<footer>
+  © 2026 Your Name
+</footer>
+
+<script>
+  const faders = document.querySelectorAll('.fade-in');
+
+  const appearOptions = {
+    threshold: 0.3
+  };
+
+  const appearOnScroll = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) {
+        return;
+      } else {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, appearOptions);
+
+  faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+  });
+</script>
+
+</body>
+</html>
