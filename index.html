@@ -97,6 +97,8 @@
       box-shadow: 0 20px 40px rgba(0,0,0,0.4);
     }
 
+    .project-card:visited { color: inherit; }
+
     footer {
       text-align: center;
       padding: 50px;
@@ -126,7 +128,7 @@
       25%, 75% { opacity: 0; }
     }
 
-    /* Rocket overlay sits in the empty space */
+    /* Rocket overlay (does NOT stretch the icon) */
     .rocket-overlay {
       position: absolute;
       inset: 0;
@@ -154,41 +156,39 @@
 
 <section class="hero">
 
-  <!-- Rocket motion path animation (works reliably) -->
-  <svg class="rocket-overlay" viewBox="0 0 1200 600" preserveAspectRatio="none" aria-hidden="true">
-    <!-- Path: left -> loop -> right -->
+  <!-- Rocket animation layer (no stretching) -->
+  <svg class="rocket-overlay" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+    <!-- Hidden motion path: left -> loop -> right -->
     <path id="flightPath"
-      d="M -100 220
-         C 200 120, 380 120, 520 210
-         C 640 290, 590 410, 470 360
-         C 360 315, 380 215, 520 230
-         C 700 260, 920 180, 1300 120"
+      d="M -120 240
+         C 160 130, 360 120, 520 210
+         C 650 300, 580 430, 450 370
+         C 340 320, 370 220, 520 240
+         C 720 270, 920 200, 1320 140"
       fill="none"
     />
 
-    <!-- Optional faint trail along the rocket position -->
-    <g opacity="0.35">
-      <circle r="2" fill="white">
-        <animateMotion dur="3.6s" begin="0.4s" fill="freeze" keySplines="0.16 1 0.3 1" calcMode="spline">
-          <mpath href="#flightPath"></mpath>
-        </animateMotion>
-      </circle>
-    </g>
+    <!-- Optional subtle trail dot -->
+    <circle r="2" fill="white" opacity="0.25">
+      <animateMotion dur="3.6s" begin="0.4s" fill="freeze" rotate="auto">
+        <mpath href="#flightPath"></mpath>
+      </animateMotion>
+    </circle>
 
-    <!-- Rocket icon group -->
-    <g>
-      <g transform="scale(1)">
-        <!-- Outline rocket similar to your reference -->
-        <path d="M80 18c-14 3-28 17-34 31l-5 13 13-5c14-6 28-20 31-34l2-10-7 5z"
-              stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        <path d="M46 62l-10 10c-3 3-4 8-2 12l2 5 5-2c4-2 9-1 12-4l10-10"
-              stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        <path d="M62 46l20 20" stroke="white" stroke-width="5" stroke-linecap="round" fill="none"/>
-        <circle cx="76" cy="40" r="7" stroke="white" stroke-width="5" fill="none"/>
-        <path d="M38 88c-8 2-14 8-16 16 8-2 14-8 16-16z"
-              stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-        <path d="M58 108c8-2 14-8 16-16-8 2-14 8-16 16z"
-              stroke="white" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <!-- Rocket group (fixed size, follows path) -->
+    <g id="rocketGroup" opacity="0">
+      <!-- Keep the rocket icon size consistent -->
+      <g transform="translate(-32,-32) scale(0.9)">
+        <path d="M82 12c-18 4-34 20-40 38l-6 16 16-6c18-6 34-22 38-40l3-14-11 6z"
+              stroke="white" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M40 66l-14 14c-4 4-5 10-3 15l3 7 7-3c5-2 11-1 15-5l14-14"
+              stroke="white" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M58 48l22 22" stroke="white" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+        <circle cx="78" cy="38" r="7" stroke="white" stroke-width="4.5" fill="none"/>
+        <path d="M32 104c-9 2-16 9-18 18 9-2 16-9 18-18z"
+              stroke="white" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+        <path d="M62 122c9-2 16-9 18-18-9 2-16 9-18 18z"
+              stroke="white" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
       </g>
 
       <!-- Motion -->
@@ -202,7 +202,7 @@
         <mpath href="#flightPath"></mpath>
       </animateMotion>
 
-      <!-- Fade in then fade out -->
+      <!-- Fade in and out -->
       <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.85;1" dur="3.6s" begin="0.4s" fill="freeze"/>
     </g>
   </svg>
@@ -218,6 +218,7 @@
   <div class="reveal">
     <h2>Projects</h2>
     <div class="project-grid">
+
       <a href="./brake-rotor.html" class="project-card reveal">
         <h3>FSAE Brake Rotor FEA</h3>
         <p>Thermal + structural validation in ANSYS.</p>
@@ -232,6 +233,7 @@
         <h3>Robotic End Effector</h3>
         <p>Suction-based grasping mechanism with iterative prototyping.</p>
       </a>
+
     </div>
   </div>
 </section>
@@ -270,11 +272,11 @@
         if (i < text.length) {
           target.textContent += text.charAt(i);
           i += 1;
-          setTimeout(tick, 32);
+          setTimeout(tick, 32); // typing speed
         }
       };
       tick();
-    }, 800);
+    }, 800); // pause before typing
   });
 
   // Reveal animation
