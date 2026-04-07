@@ -315,6 +315,85 @@
         opacity: 1;
       }
     }
+    .tools-skills-wrap {
+  display: grid;
+  gap: 24px;
+  margin-top: 10px;
+}
+
+.tools-box,
+.skills-box {
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255,255,255,0.02);
+  border-radius: 18px;
+  padding: 22px;
+}
+
+.tools-box h3,
+.skills-box h3 {
+  margin: 0 0 18px 0;
+  font-size: 1.15rem;
+  color: #f5f5f5;
+}
+
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.logo-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.015);
+}
+
+.logo-item img {
+  width: 46px;
+  height: 46px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.logo-item span {
+  color: #e8e8e8;
+  font-size: 0.95rem;
+  line-height: 1.4;
+}
+
+.skills-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+
+.skills-columns ul {
+  margin: 0;
+  padding-left: 20px;
+  color: #aaa;
+  line-height: 1.8;
+}
+
+@media (max-width: 900px) {
+  .logo-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .skills-columns {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+}
+
+@media (max-width: 640px) {
+  .logo-grid {
+    grid-template-columns: 1fr;
+  }
+}
   </style>
 </head>
 
@@ -410,39 +489,6 @@
     </section>
 
     <section class="section-block reveal">
-      <h2>Design Priorities</h2>
-      <div class="design-grid">
-        <div class="design-card">
-          <h3>Manufacturability first</h3>
-          <p>
-            I tried to keep the design realistic for common machining operations and avoid details that would make manufacturing harder than it needs to be.
-          </p>
-        </div>
-
-        <div class="design-card">
-          <h3>Clear interfaces</h3>
-          <p>
-            Mating surfaces, hole patterns, and assembly relationships needed to be readable and well-defined so the part could be integrated without unnecessary ambiguity.
-          </p>
-        </div>
-
-        <div class="design-card">
-          <h3>Clean documentation</h3>
-          <p>
-            The drawings are part of the deliverable, not an afterthought. The goal is for the design package to communicate intent clearly, not just look complete.
-          </p>
-        </div>
-
-        <div class="design-card">
-          <h3>Iterative improvement</h3>
-          <p>
-            Instead of forcing one “final” version too early, I’ve been refining the design through revision and feedback so the project keeps moving toward a stronger result.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-block reveal">
       <h2>Where I’m At</h2>
       <span class="status-tag">Current State</span>
 
@@ -487,6 +533,69 @@
         </div>
       </div>
     </section>
+    <section class="section-block reveal">
+  <h2>Tools and Skills</h2>
+
+  <div class="tools-skills-wrap">
+    <div class="tools-box">
+      <h3>Tools used in this project</h3>
+
+      <div class="logo-grid">
+        <div class="logo-item">
+          <img src="./images/solidworks-logo.png" alt="SolidWorks logo">
+          <span>SolidWorks</span>
+        </div>
+
+        <div class="logo-item">
+          <img src="./images/ansys-logo.png" alt="ANSYS logo">
+          <span>ANSYS</span>
+        </div>
+
+        <div class="logo-item">
+          <img src="./images/excel-logo.png" alt="Excel logo">
+          <span>Excel</span>
+        </div>
+
+        <div class="logo-item">
+          <img src="./images/python-logo.png" alt="Python logo">
+          <span>Python</span>
+        </div>
+
+        <div class="logo-item">
+          <img src="./images/autocad-logo.png" alt="AutoCAD logo">
+          <span>AutoCAD</span>
+        </div>
+
+        <div class="logo-item">
+          <img src="./images/fusion360-logo.png" alt="Fusion 360 logo">
+          <span>Fusion 360</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="skills-box">
+      <h3>Skills applied in this project</h3>
+
+      <div class="skills-columns">
+        <ul>
+          <li>Design for Manufacturing (DFM)</li>
+          <li>CAD modeling</li>
+          <li>Engineering drawings</li>
+          <li>Interface definition</li>
+          <li>Revision-based design</li>
+        </ul>
+
+        <ul>
+          <li>Mechanical design communication</li>
+          <li>Tolerance awareness</li>
+          <li>Assembly-minded design</li>
+          <li>Documentation clarity</li>
+          <li>Iterative refinement</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
   </main>
 
   <footer>
