@@ -88,6 +88,30 @@
       line-height: 1.05;
     }
 
+    .subtitle {
+      color: #a9a9a9;
+      max-width: 760px;
+      line-height: 1.7;
+      font-size: 1.02rem;
+      margin-bottom: 22px;
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .pill {
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.03);
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      color: #ddd;
+    }
+
     .section-block {
       margin-top: 30px;
       padding: 28px;
@@ -164,10 +188,64 @@
       border-radius: 12px;
     }
 
+    .media-placeholder {
+      width: 100%;
+      min-height: 260px;
+      border-radius: 12px;
+      border: 1px dashed rgba(255,255,255,0.16);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #7f7f7f;
+      font-size: 0.95rem;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+      background: rgba(255,255,255,0.015);
+    }
+
     .caption {
       margin-top: 10px;
       font-size: 0.86rem;
       color: #8a8a8a;
+      line-height: 1.5;
+    }
+
+    .design-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .design-card {
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.02);
+      border-radius: 16px;
+      padding: 18px;
+    }
+
+    .design-card h3 {
+      margin: 0 0 8px 0;
+      font-size: 1rem;
+      color: #f5f5f5;
+    }
+
+    .design-card p {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.65;
+    }
+
+    .status-tag {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      color: #e7e7e7;
+      font-size: 0.85rem;
     }
 
     footer {
@@ -178,10 +256,12 @@
       border-top: 1px solid rgba(255,255,255,0.06);
     }
 
+    /* Reveal animation */
     .reveal {
       opacity: 0;
       transform: translateY(18px);
       transition: opacity 0.7s ease, transform 0.7s ease;
+      will-change: opacity, transform;
     }
 
     .reveal.visible {
@@ -189,7 +269,27 @@
       transform: translateY(0);
     }
 
-    /* FIXED LOGO SECTION */
+    /* Tools + Skills */
+    .tools-skills-wrap {
+      display: grid;
+      gap: 24px;
+      margin-top: 10px;
+    }
+
+    .tools-box,
+    .skills-box {
+      border: 1px solid rgba(255,255,255,0.08);
+      background: rgba(255,255,255,0.02);
+      border-radius: 18px;
+      padding: 22px;
+    }
+
+    .tools-box h3,
+    .skills-box h3 {
+      margin: 0 0 18px 0;
+      font-size: 1.15rem;
+      color: #f5f5f5;
+    }
 
     .logo-grid {
       display: grid;
@@ -201,30 +301,212 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 110px;
-      padding: 14px;
-      border-radius: 16px;
-      background: #d6d6d6;
+      min-height: 160px;
+      padding: 22px;
+      border-radius: 18px;
+      background: #d8d8d8;
+      border: 1px solid rgba(255,255,255,0.10);
+      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    }
+
+    .logo-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
+      background: #e2e2e2;
     }
 
     .logo-item img {
-      max-width: 120px;
-      height: 55px;
+      width: 100%;
+      max-width: 180px;
+      height: 90px;
       object-fit: contain;
+      display: block;
+      flex-shrink: 0;
     }
 
+    .skills-columns {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .skills-columns ul {
+      margin: 0;
+      padding-left: 20px;
+      color: #aaa;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 980px) {
+      .snapshot-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+
+      .design-grid {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 2.35rem;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .skills-columns {
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      nav {
+        padding: 14px 6%;
+      }
+
+      main {
+        padding: 110px 6% 80px;
+      }
+
+      .snapshot-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .section-block {
+        padding: 22px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .logo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .logo-item {
+        min-height: 140px;
+      }
+
+      .logo-item img {
+        max-width: 170px;
+        height: 80px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal {
+        transition: none;
+        transform: none;
+        opacity: 1;
+      }
+    }
   </style>
 </head>
 
 <body>
   <nav>
     <a class="back" href="index.html">← Back</a>
+    <div style="font-size:0.9rem; color:#8f8f8f;">Project</div>
   </nav>
 
   <main>
     <section class="hero reveal">
-      <div class="eyebrow">Brakes Project</div>
-      <h1>Front Brake Rotor Design</h1>
+      <div class="eyebrow">Propulsion Project</div>
+      <h1>Pintle Injector Design</h1>
+
+    </section>
+
+    <section class="section-block reveal">
+      <h2>Project Snapshot</h2>
+      <div class="snapshot-grid">
+        <div class="snapshot-card">
+          <div class="snapshot-label">Role</div>
+          <div class="snapshot-value">Owned pintle injector design and CAD integration</div>
+        </div>
+        <div class="snapshot-card">
+          <div class="snapshot-label">Focus</div>
+          <div class="snapshot-value">Flow geometry, sealing, and manufacturable design</div>
+        </div>
+        <div class="snapshot-card">
+          <div class="snapshot-label">Main Tools</div>
+          <div class="snapshot-value">Onshape, Fusion 360</div>
+        </div>
+        <div class="snapshot-card">
+          <div class="snapshot-label">Status</div>
+          <div class="snapshot-value">Design complete; moving into final simulations and manufacturing</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block reveal">
+      <h2>What This Project Is</h2>
+      <div class="two-col">
+        <div>
+          <p>
+            Designed a pintle injector for a liquid rocket engine as part of Highlander Space Program’s Project Clementine.
+          </p>
+          <p>
+            Owned the injector from early geometry to final drawings, focusing on a design that is both functional and manufacturable. The injector supports an oxidizer-centered configuration and routes flow for both film cooling and regenerative cooling.
+          </p>
+      
+        </div>
+
+        <div class="media-card">
+          <img src="./cad of full engine.png" alt="CAD model of full injector assembly">
+          <div class="caption">
+            Full Engine Assembly CAD
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block reveal">
+      <h2>What I Worked On</h2>
+      <div class="two-col">
+        <div>
+          <ul>
+            <li>Designed injector geometry, including internal flow paths and interfaces</li>
+            <li>Sized flow areas and O-ring grooves for sealing and performance</li>
+            <li>Integrated film cooling (~11% of total flow) into injector design</li>
+            <li>Moved CAD from Fusion 360 to Onshape for team collaboration</li>
+            <li>Created engineering drawings used for manufacturing</li>
+            <li>Iterated design based on team reviews and build constraints</li>
+          </ul>
+        </div>
+
+        <div class="media-card">
+          <img src="./Plate 2 Drawing.png" alt="Engineering drawing for manufacturing of a specific plate of the injector">
+          <div class="caption">
+            Engineering drawing I created for one of several injector plates
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-block reveal">
+      <h2>Where I’m At</h2>
+
+      <div class="two-col">
+        <div>
+          <p>
+            The injector design is complete and fully documented with engineering drawings.
+          </p>
+          <p>
+            The team is preparing for final ANSYS simulations to validate flow behavior and performance before moving into manufacturing. My role is shifting toward supporting validation and ensuring the design is ready to be built.
+          </p>
+        </div>
+
+        <div class="media-card">
+          <img src="./pintle injector life size 3d print.jpg" alt="Current state of pintle injector 3D print">
+          <div class="caption">
+            Full-scale 3D printed cross-section of the engine, used to visualize internal geometry and verify fit before manufacturing.
+          </div>
+        </div>
+      </div>
     </section>
 
     <section class="section-block reveal">
@@ -234,21 +516,47 @@
         <div class="tools-box">
           <h3>Tools used in this project</h3>
 
-          <!-- FIXED PART -->
           <div class="logo-grid">
             <div class="logo-item">
-              <img src="./SolidWorks_logo.png">
+              <img src="./Fusion360_logo.png" alt="Fusion360 logo">
             </div>
 
             <div class="logo-item">
-              <img src="./ANSYS_logo.png">
+              <img src="./ANSYS_logo.png" alt="ANSYS logo">
             </div>
-          </div>
 
+            <div class="logo-item">
+              <img src="./Onshape_logo.png" alt="Onshape logo">
+            </div>
+
+            <div class="logo-item">
+              <img src="./SolidWorks_logo.png" alt="SolidWorks logo">
+            </div>
+
+          </div>
+        </div>
+
+        <div class="skills-box">
+          <h3>Skills applied in this project</h3>
+
+          <div class="skills-columns">
+            <ul>
+              <li>GD&T and tolerance awareness</li>
+              <li>Design for Manufacturing (DFM)</li>
+              <li>CAD modeling (Fusion 360, Onshape)</li>
+              <li>Engineering drawings and dimensioning</li>
+            </ul>
+
+            <ul>
+              <li>O-ring groove design and sealing considerations</li>
+              <li>Flow area sizing and internal geometry design</li>
+              <li>Design for assembly (DFA)</li>
+              <li>Iterative design based on feedback</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
-
   </main>
 
   <footer>
