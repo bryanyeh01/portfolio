@@ -123,20 +123,20 @@
       color: black;
     }
 
-    /* NEW PROJECT SECTION */
+    /* PROJECTS */
     .projects-stack {
       display: flex;
       flex-direction: column;
-      gap: 24px;
+      gap: 56px;
       margin-top: 20px;
     }
 
     .project-panel {
       border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 34px;
+      padding-top: 36px;
     }
 
-    .project-header {
+    .project-layout {
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
       gap: 48px;
@@ -144,52 +144,36 @@
     }
 
     .project-copy h3 {
-      font-size: clamp(2.2rem, 5vw, 5.2rem);
+      font-size: clamp(2.3rem, 5vw, 5.4rem);
       line-height: 0.95;
+      letter-spacing: -0.05em;
       margin: 0 0 28px 0;
-      letter-spacing: -0.04em;
       max-width: 620px;
     }
 
     .project-copy.compact h3 {
-      font-size: clamp(1.8rem, 4vw, 3.5rem);
-      line-height: 1;
+      font-size: clamp(2rem, 4vw, 4rem);
     }
 
-    .project-toggle {
+    .see-more {
       display: inline-flex;
       align-items: center;
-      gap: 14px;
-      background: transparent;
-      border: none;
+      gap: 12px;
       color: #f5f5f5;
+      text-decoration: none;
       font-size: 1.05rem;
-      padding: 0;
-      cursor: pointer;
       opacity: 0.92;
-      transition: opacity 0.2s ease;
+      transition: transform 0.2s ease, opacity 0.2s ease;
     }
 
-    .project-toggle:hover {
+    .see-more:hover {
       opacity: 1;
+      transform: translateX(4px);
     }
 
-    .toggle-icon {
-      width: 22px;
-      height: 22px;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      transition: transform 0.3s ease;
-    }
-
-    .project-panel.expanded .toggle-icon {
-      transform: rotate(90deg);
-    }
-
-    .project-media-wrap {
-      display: flex;
-      justify-content: flex-end;
+    .see-more-arrow {
+      font-size: 1.25rem;
+      line-height: 1;
     }
 
     .project-media {
@@ -207,59 +191,6 @@
       height: 100%;
       object-fit: cover;
       display: block;
-    }
-
-    .project-expand {
-      display: grid;
-      grid-template-rows: 0fr;
-      transition: grid-template-rows 0.5s cubic-bezier(0.16, 1, 0.3, 1), margin-top 0.3s ease;
-      margin-top: 0;
-    }
-
-    .project-panel.expanded .project-expand {
-      grid-template-rows: 1fr;
-      margin-top: 26px;
-    }
-
-    .project-expand-inner {
-      overflow: hidden;
-    }
-
-    .project-expand-content {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 48px;
-      align-items: center;
-      padding-top: 6px;
-    }
-
-    .project-summary {
-      color: #aaa;
-      max-width: 620px;
-      line-height: 1.7;
-      font-size: 1rem;
-      margin-bottom: 22px;
-    }
-
-    .see-more {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      color: #f5f5f5;
-      text-decoration: none;
-      font-size: 1.05rem;
-      padding: 12px 0;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-    }
-
-    .see-more:hover {
-      opacity: 1;
-      transform: translateX(4px);
-    }
-
-    .see-more-arrow {
-      font-size: 1.2rem;
-      line-height: 1;
     }
 
     footer {
@@ -321,14 +252,9 @@
     }
 
     @media (max-width: 1000px) {
-      .project-header,
-      .project-expand-content {
+      .project-layout {
         grid-template-columns: 1fr;
         gap: 28px;
-      }
-
-      .project-media-wrap {
-        justify-content: flex-start;
       }
 
       .project-media {
@@ -348,10 +274,10 @@
       section { padding: 80px 6%; }
       .hero { padding-top: 120px; }
       .project-copy h3 {
-        font-size: 2.6rem;
+        font-size: 2.7rem;
       }
       .project-copy.compact h3 {
-        font-size: 2.1rem;
+        font-size: 2.2rem;
       }
     }
 
@@ -359,12 +285,6 @@
       .reveal { transition: none; transform: none; opacity: 1; }
       .cursor { animation: none; }
       .toast { transition: none; }
-      .project-expand {
-        transition: none;
-      }
-      .toggle-icon {
-        transition: none;
-      }
     }
   </style>
 </head>
@@ -421,122 +341,50 @@
 
     <div class="projects-stack">
 
-      <article class="project-panel reveal expanded">
-        <div class="project-header">
+      <article class="project-panel reveal">
+        <div class="project-layout">
           <div class="project-copy">
             <h3>FSAE Brake Rotor FEA</h3>
-            <button class="project-toggle" type="button" aria-expanded="true">
-              <span class="toggle-icon">›</span>
-              <span>Project details</span>
-            </button>
+            <a class="see-more" href="./brake-rotor.html">
+              <span class="see-more-arrow">›</span>
+              <span>See more</span>
+            </a>
           </div>
 
-          <div class="project-media-wrap">
-            <div class="project-media">
-              <img src="./brake-rotor-cover.jpg" alt="Brake rotor project cover image">
-            </div>
-          </div>
-        </div>
-
-        <div class="project-expand">
-          <div class="project-expand-inner">
-            <div class="project-expand-content">
-              <div>
-                <p class="project-summary">
-                  Thermal and structural validation of a Formula SAE brake rotor in ANSYS, focused on realistic braking loads, temperature effects, and safety under thermal-structural coupling.
-                </p>
-                <a class="see-more" href="./brake-rotor.html">
-                  <span class="see-more-arrow">›</span>
-                  <span>See more</span>
-                </a>
-              </div>
-
-              <div class="project-media-wrap">
-                <div class="project-media">
-                  <img src="./brake-rotor-cover.jpg" alt="Brake rotor project detail image">
-                </div>
-              </div>
-            </div>
+          <div class="project-media">
+            <img src="./brake-rotor-cover.jpg" alt="Brake rotor project cover image">
           </div>
         </div>
       </article>
 
       <article class="project-panel reveal">
-        <div class="project-header">
+        <div class="project-layout">
           <div class="project-copy compact">
             <h3>Pintle Injector Design</h3>
-            <button class="project-toggle" type="button" aria-expanded="false">
-              <span class="toggle-icon">›</span>
-              <span>Project details</span>
-            </button>
+            <a class="see-more" href="./pintle-injector.html">
+              <span class="see-more-arrow">›</span>
+              <span>See more</span>
+            </a>
           </div>
 
-          <div class="project-media-wrap">
-            <div class="project-media">
-              <img src="./pintle-injector-cover.jpg" alt="Pintle injector project cover image">
-            </div>
-          </div>
-        </div>
-
-        <div class="project-expand">
-          <div class="project-expand-inner">
-            <div class="project-expand-content">
-              <div>
-                <p class="project-summary">
-                  Design and documentation of a liquid rocket pintle injector assembly, with focus on manufacturable geometry, drawing clarity, and revision-based design refinement.
-                </p>
-                <a class="see-more" href="./pintle-injector.html">
-                  <span class="see-more-arrow">›</span>
-                  <span>See more</span>
-                </a>
-              </div>
-
-              <div class="project-media-wrap">
-                <div class="project-media">
-                  <img src="./pintle-injector-cover.jpg" alt="Pintle injector project detail image">
-                </div>
-              </div>
-            </div>
+          <div class="project-media">
+            <img src="./pintle-injector-cover.jpg" alt="Pintle injector project cover image">
           </div>
         </div>
       </article>
 
       <article class="project-panel reveal">
-        <div class="project-header">
+        <div class="project-layout">
           <div class="project-copy compact">
             <h3>Robotic End Effector</h3>
-            <button class="project-toggle" type="button" aria-expanded="false">
-              <span class="toggle-icon">›</span>
-              <span>Project details</span>
-            </button>
+            <a class="see-more" href="./end-effector.html">
+              <span class="see-more-arrow">›</span>
+              <span>See more</span>
+            </a>
           </div>
 
-          <div class="project-media-wrap">
-            <div class="project-media">
-              <img src="./end-effector-cover.jpg" alt="Robotic end effector project cover image">
-            </div>
-          </div>
-        </div>
-
-        <div class="project-expand">
-          <div class="project-expand-inner">
-            <div class="project-expand-content">
-              <div>
-                <p class="project-summary">
-                  Mechanical design and prototyping of an end effector for robotic fruit picking, centered on grasp reliability, suction integration, and repeated physical iteration.
-                </p>
-                <a class="see-more" href="./end-effector.html">
-                  <span class="see-more-arrow">›</span>
-                  <span>See more</span>
-                </a>
-              </div>
-
-              <div class="project-media-wrap">
-                <div class="project-media">
-                  <img src="./end-effector-cover.jpg" alt="Robotic end effector project detail image">
-                </div>
-              </div>
-            </div>
+          <div class="project-media">
+            <img src="./end-effector-cover.jpg" alt="Robotic end effector project cover image">
           </div>
         </div>
       </article>
@@ -628,28 +476,7 @@
       showToast("Copied email to clipboard");
     }
   });
-
-  const projectPanels = document.querySelectorAll(".project-panel");
-
-  projectPanels.forEach((panel) => {
-    const toggle = panel.querySelector(".project-toggle");
-
-    toggle.addEventListener("click", () => {
-      const isExpanded = panel.classList.contains("expanded");
-
-      projectPanels.forEach((otherPanel) => {
-        otherPanel.classList.remove("expanded");
-        const otherToggle = otherPanel.querySelector(".project-toggle");
-        otherToggle.setAttribute("aria-expanded", "false");
-      });
-
-      if (!isExpanded) {
-        panel.classList.add("expanded");
-        toggle.setAttribute("aria-expanded", "true");
-      }
-    });
-  });
 </script>
 
 </body>
-</h
+</html>
