@@ -88,30 +88,6 @@
       line-height: 1.05;
     }
 
-    .subtitle {
-      color: #a9a9a9;
-      max-width: 760px;
-      line-height: 1.7;
-      font-size: 1.02rem;
-      margin-bottom: 22px;
-    }
-
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 16px;
-    }
-
-    .pill {
-      border: 1px solid rgba(255,255,255,0.12);
-      background: rgba(255,255,255,0.03);
-      padding: 8px 12px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      color: #ddd;
-    }
-
     .section-block {
       margin-top: 30px;
       padding: 28px;
@@ -188,64 +164,10 @@
       border-radius: 12px;
     }
 
-    .media-placeholder {
-      width: 100%;
-      min-height: 260px;
-      border-radius: 12px;
-      border: 1px dashed rgba(255,255,255,0.16);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #7f7f7f;
-      font-size: 0.95rem;
-      text-align: center;
-      padding: 20px;
-      box-sizing: border-box;
-      background: rgba(255,255,255,0.015);
-    }
-
     .caption {
       margin-top: 10px;
       font-size: 0.86rem;
       color: #8a8a8a;
-      line-height: 1.5;
-    }
-
-    .design-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
-      margin-top: 18px;
-    }
-
-    .design-card {
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.02);
-      border-radius: 16px;
-      padding: 18px;
-    }
-
-    .design-card h3 {
-      margin: 0 0 8px 0;
-      font-size: 1rem;
-      color: #f5f5f5;
-    }
-
-    .design-card p {
-      margin: 0;
-      font-size: 0.95rem;
-      line-height: 1.65;
-    }
-
-    .status-tag {
-      display: inline-block;
-      margin-bottom: 14px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
-      color: #e7e7e7;
-      font-size: 0.85rem;
     }
 
     footer {
@@ -256,12 +178,10 @@
       border-top: 1px solid rgba(255,255,255,0.06);
     }
 
-    /* Reveal animation */
     .reveal {
       opacity: 0;
       transform: translateY(18px);
       transition: opacity 0.7s ease, transform 0.7s ease;
-      will-change: opacity, transform;
     }
 
     .reveal.visible {
@@ -269,27 +189,7 @@
       transform: translateY(0);
     }
 
-    /* Tools + Skills */
-    .tools-skills-wrap {
-      display: grid;
-      gap: 24px;
-      margin-top: 10px;
-    }
-
-    .tools-box,
-    .skills-box {
-      border: 1px solid rgba(255,255,255,0.08);
-      background: rgba(255,255,255,0.02);
-      border-radius: 18px;
-      padding: 22px;
-    }
-
-    .tools-box h3,
-    .skills-box h3 {
-      margin: 0 0 18px 0;
-      font-size: 1.15rem;
-      color: #f5f5f5;
-    }
+    /* FIXED LOGO SECTION */
 
     .logo-grid {
       display: grid;
@@ -301,217 +201,30 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      min-height: 160px;
-      padding: 22px;
-      border-radius: 18px;
-      background: #d8d8d8;
-      border: 1px solid rgba(255,255,255,0.10);
-      transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
-    }
-
-    .logo-item:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 30px rgba(0,0,0,0.35);
-      background: #e2e2e2;
+      min-height: 110px;
+      padding: 14px;
+      border-radius: 16px;
+      background: #d6d6d6;
     }
 
     .logo-item img {
-      width: 100%;
-      max-width: 180px;
-      height: 90px;
+      max-width: 120px;
+      height: 55px;
       object-fit: contain;
-      display: block;
-      flex-shrink: 0;
     }
 
-    .skills-columns {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-    }
-
-    .skills-columns ul {
-      margin: 0;
-      padding-left: 20px;
-      color: #aaa;
-      line-height: 1.8;
-    }
-
-    @media (max-width: 980px) {
-      .snapshot-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .two-col {
-        grid-template-columns: 1fr;
-      }
-
-      .design-grid {
-        grid-template-columns: 1fr;
-      }
-
-      h1 {
-        font-size: 2.35rem;
-      }
-    }
-
-    @media (max-width: 900px) {
-      .skills-columns {
-        grid-template-columns: 1fr;
-        gap: 10px;
-      }
-    }
-
-    @media (max-width: 640px) {
-      nav {
-        padding: 14px 6%;
-      }
-
-      main {
-        padding: 110px 6% 80px;
-      }
-
-      .snapshot-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section-block {
-        padding: 22px;
-      }
-
-      h1 {
-        font-size: 2rem;
-      }
-
-      .logo-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .logo-item {
-        min-height: 140px;
-      }
-
-      .logo-item img {
-        max-width: 170px;
-        height: 80px;
-      }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      .reveal {
-        transition: none;
-        transform: none;
-        opacity: 1;
-      }
-    }
   </style>
 </head>
 
 <body>
   <nav>
     <a class="back" href="index.html">← Back</a>
-    <div style="font-size:0.9rem; color:#8f8f8f;">Project</div>
   </nav>
 
   <main>
     <section class="hero reveal">
       <div class="eyebrow">Brakes Project</div>
       <h1>Front Brake Rotor Design</h1>
-
-    </section>
-
-    <section class="section-block reveal">
-      <h2>Project Snapshot</h2>
-      <div class="snapshot-grid">
-        <div class="snapshot-card">
-          <div class="snapshot-label">Role</div>
-          <div class="snapshot-value">Led brake rotor design and FEA analysis</div>
-        </div>
-        <div class="snapshot-card">
-          <div class="snapshot-label">Focus</div>
-          <div class="snapshot-value">Thermal-structural behavior under braking loads</div>
-        </div>
-        <div class="snapshot-card">
-          <div class="snapshot-label">Main Tools</div>
-          <div class="snapshot-value">SolidWorks, ANSYS Workbench</div>
-        </div>
-        <div class="snapshot-card">
-          <div class="snapshot-label">Status</div>
-          <div class="snapshot-value">Design validated through simulation</div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-block reveal">
-      <h2>What This Project Is</h2>
-      <div class="two-col">
-        <div>
-          <p>
-            Designed and validated the front brake rotor for a Formula SAE car as part of Highlander Racing.
-          </p>
-          <p>
-            The goal was to ensure the rotor could withstand realistic braking conditions by evaluating stress, deformation, and safety under combined thermal and mechanical loading. This included modeling braking torque from system-level calculations and applying experimentally derived temperature data.
-          </p>
-      
-        </div>
-
-        <div class="media-card">
-          <img src="./Rotor.png" alt="CAD model of full injector assembly">
-          <div class="caption">
-            Front Brake Rotor CAD
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-block reveal">
-      <h2>What I Worked On</h2>
-      <div class="two-col">
-        <div>
-          <ul>
-            <li>Modeled the brake rotor geometry in SolidWorks</li>
-            <li>Calculated braking torque (374.53 N·m) from pedal force, brake bias, and system parameters</li>
-            <li>Set up transient thermal and structural simulations in ANSYS Workbench</li>
-            <li>Applied pad-contact heating and convection boundary conditions</li>
-            <li>Coupled thermal results into structural analysis to evaluate stress and deformation</li>
-            <li>Identified stress concentrations at rivet mounting regions</li>
-            <li>Evaluated realistic stress values by accounting for boundary condition artifacts</li>
-            <li>Determined factor of safety under both moderate (200°C) and severe (500°C) conditions</li>
-          </ul>
-        </div>
-
-        <div class="media-card">
-          <img src="./Stress.png" alt="Engineering drawing for manufacturing of a specific plate of the injector">
-          <div class="caption">
-            Von Mises stress distribution highlighting peak stresses at the rotor mounting regions
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section-block reveal">
-      <h2>Where I’m At</h2>
-
-      <div class="two-col">
-        <div>
-          <p>
-            The rotor design has been validated through transient thermal-structural simulation.
-          </p>
-          <p>
-            Results showed that the highest stresses occur at the mounting regions where braking torque is transferred, with a representative factor of safety around 2.6. The transient approach improved realism by separating heating and loading, avoiding the unrealistic stress spikes seen in earlier static models.
-          </p>
-          <p>
-            The design is now supported by simulation results and ready for further refinement or manufacturing consideration.
-          </p>
-        </div>
-
-        <div class="media-card">
-          <img src="./Local Stress Evaluation.png" alt="Current state of pintle injector 3D print">
-          <div class="caption">
-            Local stress evaluation near mounting points, used to identify representative stress values beyond boundary-condition hotspots.
-          </div>
-        </div>
-      </div>
     </section>
 
     <section class="section-block reveal">
@@ -521,39 +234,21 @@
         <div class="tools-box">
           <h3>Tools used in this project</h3>
 
+          <!-- FIXED PART -->
+          <div class="logo-grid">
             <div class="logo-item">
-              <img src="./SolidWorks_logo.png" alt="SolidWorks logo">
+              <img src="./SolidWorks_logo.png">
             </div>
 
             <div class="logo-item">
-              <img src="./ANSYS_logo.png" alt="ANSYS logo">
+              <img src="./ANSYS_logo.png">
             </div>
-
-
           </div>
-        </div>
 
-        <div class="skills-box">
-          <h3>Skills applied in this project</h3>
-
-          <div class="skills-columns">
-            <ul>
-              <li>ANSYS thermal and structural FEA</li>
-              <li>Transient simulation setup</li>
-              <li>Thermal–structural coupling</li>
-              <li>Brake system force and torque calculations</li>
-            </ul>
-
-            <ul>
-              <li>Stress and deformation analysis</li>
-              <li>Factor of safety evaluation</li>
-              <li>Interpreting simulation limitations and boundary conditions</li>
-              <li>CAD modeling (SolidWorks)</li>
-            </ul>
-          </div>
         </div>
       </div>
     </section>
+
   </main>
 
   <footer>
