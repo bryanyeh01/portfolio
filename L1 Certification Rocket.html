@@ -458,7 +458,7 @@
         <div class="media-card">
           <img src="./Rocket.jpg" alt="CAD model of full injector assembly">
           <div class="caption">
-            Front Brake Rotor CAD
+            Fully assembled rocket prior to launch
           </div>
         </div>
       </div>
@@ -469,21 +469,21 @@
       <div class="two-col">
         <div>
           <ul>
-            <li>Modeled the brake rotor geometry in SolidWorks</li>
-            <li>Calculated braking torque (374.53 N·m) from pedal force, brake bias, and system parameters</li>
-            <li>Set up transient thermal and structural simulations in ANSYS Workbench</li>
-            <li>Applied pad-contact heating and convection boundary conditions</li>
-            <li>Coupled thermal results into structural analysis to evaluate stress and deformation</li>
-            <li>Identified stress concentrations at rivet mounting regions</li>
-            <li>Evaluated realistic stress values by accounting for boundary condition artifacts</li>
-            <li>Determined factor of safety under both moderate (200°C) and severe (500°C) conditions</li>
+            <li>Designed the rocket airframe and components in Fusion 360</li>
+            <li>Ran OpenRocket simulations to determine center of gravity (CG), center of pressure (CP), and stability margin</li>
+            <li>Achieved a stable configuration with ~5 in CG–CP separation (~2.23 caliber stability)</li>
+            <li>Tuned mass distribution by adding weight (rice) to the nose cone to shift CG to the desired location</li>
+            <li>Selected and integrated an H135 motor (T/W ~14:1) for launch performance</li>
+            <li>Designed and implemented a parachute recovery system with nose cone ejection</li>
+            <li>Built and assembled the rocket using structural bonding and proper alignment</li>
+            <li>Successfully launched, deployed parachute, and recovered the rocket intact</li>
           </ul>
         </div>
 
         <div class="media-card">
           <img src="./Rocket Details.png" alt="Engineering drawing for manufacturing of a specific plate of the injector">
           <div class="caption">
-            Von Mises stress distribution highlighting peak stresses at the rotor mounting regions
+            OpenRocket simulation showing CG, CP, and predicted flight performance.
           </div>
         </div>
       </div>
@@ -495,20 +495,17 @@
       <div class="two-col">
         <div>
           <p>
-            The rotor design has been validated through transient thermal-structural simulation.
+            The rocket was successfully launched and recovered, meeting all requirements for NAR Level 1 certification.
           </p>
           <p>
-            Results showed that the highest stresses occur at the mounting regions where braking torque is transferred, with a representative factor of safety around 2.6. The transient approach improved realism by separating heating and loading, avoiding the unrealistic stress spikes seen in earlier static models.
-          </p>
-          <p>
-            The design is now supported by simulation results and ready for further refinement or manufacturing consideration.
+            Flight behavior matched simulation predictions, with stable ascent and proper recovery system deployment. The project demonstrates the ability to take a design from simulation to physical build and validate it through real-world testing.
           </p>
         </div>
 
         <video autoplay muted loop playsinline width="100%">
           <source src="./Rocket Launch.mp4" type="video/mp4">
           <div class="caption">
-            Local stress evaluation near mounting points, used to identify representative stress values beyond boundary-condition hotspots.
+            Successful launch demonstrating stable flight and validated design
           </div>
         </video>
       </div>
