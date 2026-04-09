@@ -425,19 +425,19 @@
       <div class="snapshot-grid">
         <div class="snapshot-card">
           <div class="snapshot-label">Role</div>
-          <div class="snapshot-value">Led brake rotor design and FEA analysis</div>
+          <div class="snapshot-value">Developed mathematical model and simulation</div>
         </div>
         <div class="snapshot-card">
           <div class="snapshot-label">Focus</div>
-          <div class="snapshot-value">Thermal-structural behavior under braking loads</div>
+          <div class="snapshot-value">Vibration analysis and modal behavior</div>
         </div>
         <div class="snapshot-card">
           <div class="snapshot-label">Main Tools</div>
-          <div class="snapshot-value">SolidWorks, ANSYS Workbench</div>
+          <div class="snapshot-value">MATLAB, linear algebra, numerical methods</div>
         </div>
         <div class="snapshot-card">
           <div class="snapshot-label">Status</div>
-          <div class="snapshot-value">Design validated through simulation</div>
+          <div class="snapshot-value">Model validated through simulation and visualization</div>
         </div>
       </div>
     </section>
@@ -447,10 +447,10 @@
       <div class="two-col">
         <div>
           <p>
-            Designed and validated the front brake rotor for a Formula SAE car as part of Highlander Racing.
+            Developed a mathematical and computational model to analyze vibrations in a coupled mass–spring system with multiple degrees of freedom.
           </p>
           <p>
-            The goal was to ensure the rotor could withstand realistic braking conditions by evaluating stress, deformation, and safety under combined thermal and mechanical loading. This included modeling braking torque from system-level calculations and applying experimentally derived temperature data.
+            The system was modeled using matrix equations derived from Newton’s laws, then solved using eigenvalue methods to determine natural frequencies and mode shapes. MATLAB was used to simulate system behavior and visualize how different vibration modes affect motion.
           </p>
       
         </div>
@@ -469,14 +469,14 @@
       <div class="two-col">
         <div>
           <ul>
-            <li>Modeled the brake rotor geometry in SolidWorks</li>
-            <li>Calculated braking torque (374.53 N·m) from pedal force, brake bias, and system parameters</li>
-            <li>Set up transient thermal and structural simulations in ANSYS Workbench</li>
-            <li>Applied pad-contact heating and convection boundary conditions</li>
-            <li>Coupled thermal results into structural analysis to evaluate stress and deformation</li>
-            <li>Identified stress concentrations at rivet mounting regions</li>
-            <li>Evaluated realistic stress values by accounting for boundary condition artifacts</li>
-            <li>Determined factor of safety under both moderate (200°C) and severe (500°C) conditions</li>
+            <li>Derived equations of motion for a coupled mass–spring system using Newton’s laws</li>
+            <li>Formulated the system in matrix form: Mẍ + Kx = 0</li>
+            <li>Constructed mass and stiffness matrices for arbitrary system size</li>
+            <li>Converted the system into an eigenvalue problem to solve for natural frequencies and mode shapes</li>
+            <li>Implemented a MATLAB solver using eigenvalue decomposition</li>
+            <li>Computed natural frequencies from eigenvalues and analyzed modal behavior</li>
+            <li>Simulated time-domain motion using superposition of modes</li>
+            <li>Visualized system behavior through plots and animated motion</li>
           </ul>
         </div>
 
@@ -495,22 +495,22 @@
       <div class="two-col">
         <div>
           <p>
-            The rotor design has been validated through transient thermal-structural simulation.
+            The model successfully captures the behavior of coupled vibration systems and produces realistic mode shapes and frequency trends.
           </p>
           <p>
-            Results showed that the highest stresses occur at the mounting regions where braking torque is transferred, with a representative factor of safety around 2.6. The transient approach improved realism by separating heating and loading, avoiding the unrealistic stress spikes seen in earlier static models.
+            Results show that lower modes correspond to coordinated motion of masses, while higher modes introduce more complex oscillation patterns, matching expected physical behavior.
           </p>
           <p>
-            The design is now supported by simulation results and ready for further refinement or manufacturing consideration.
+            The project demonstrates how mechanical systems can be modeled, solved, and interpreted using computational tools.
           </p>
         </div>
 
-        <div class="media-card">
-          <img src="./Local Stress Evaluation.png" alt="Current state of pintle injector 3D print">
+        <video autoplay muted loop playsinline width="100%">
+          <source src="./mass spring.mp4" type="video/mp4">
           <div class="caption">
-            Local stress evaluation near mounting points, used to identify representative stress values beyond boundary-condition hotspots.
+            Successful launch demonstrating stable flight and validated design
           </div>
-        </div>
+        </video>
       </div>
     </section>
 
